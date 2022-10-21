@@ -3,5 +3,5 @@
 
 m = [('Магазин', 'railway_fork'), ('Игры', 'games'), ('Информация о боте', 'menu_item'), ('Пополнить счет', 'info')]
 
-print(list(sorted(m, key=lambda elem: elem[1])))
+print(list(sorted(m, key=lambda elem: elem[1][-1])))
 

@@ -3,15 +3,15 @@ class Straight:
     count_cross_zero = 0
 
     def __new__(cls, *args, **kwargs):
-        print("Р­С‚Рѕ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ!!!")
+        print("Это конструктор!!!")
         return super().__new__(cls)
 
     def __init__(self, x1, y1, x2, y2):
-        print("Р­С‚Рѕ РёРЅРёС†РёР°Р»РёР·Р°С‚РѕСЂ!!!")
+        print("Это инициализатор!!!")
         self.x1, self.y1, self.x2, self.y2 = x1, y1, x2, y2
 
     def __del__(self):
-        print("Р­С‚Рѕ РґРµСЃС‚СЂСѓРєС‚РѕСЂ!!!")
+        print("Это деструктор!!!")
 
     @classmethod
     def inc_count(cls, zero, parallel):
@@ -25,18 +25,18 @@ class Straight:
         a = y2 - y1
         b = x1 - x2
         c = x2 * y1 - x1 * y2
-        print(f"РЈСЂР°РІРЅРµРЅРёРµ РїСЂСЏРјРѕР№ РёРјРµРµС‚ РІРёРґ: {a:-}x{b:+}y{c:+}=0")
+        print(f"Уравнение прямой имеет вид: {a:-}x{b:+}y{c:+}=0")
         Straight.inc_count(c == 0, x1 == x2 or y1 == y2)
         point = Straight.get_intersection_points(x1, x2, y1, y2)
-        print(f'РўРѕС‡РєРё РїРµСЂРµСЃРµС‡РµРЅРёСЏ РїСЂСЏРјРѕР№ СЃ РѕСЃСЏРјРё РєРѕРѕСЂРґРёРЅР°С‚: ({round(point[0])}:0), (0:{round(point[1])})')
+        print(f'Точки пересечения прямой с осями координат: ({round(point[0])}:0), (0:{round(point[1])})')
 
     @staticmethod
     def get_intersection_points(x1, x2, y1, y2):
         x = None
         y = None
         if (x1 != x2) and (y1 != y2):
-            x = -(x2 * y1 - x1 * y2) / (y2 - y1)  # РїРµСЂРµСЃРµС‡РµРЅРёРµ СЃ "С…"
-            y = -(x2 * y1 - x1 * y2) / (x1 - x2)  # РїРµСЂРµСЃРµС‡РµРЅРёРµ СЃ "Y"
+            x = -(x2 * y1 - x1 * y2) / (y2 - y1)  # пересечение с "х"
+            y = -(x2 * y1 - x1 * y2) / (x1 - x2)  # пересечение с "Y"
         elif x1 == x2:
             x = x1
             y = 0

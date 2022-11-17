@@ -103,6 +103,7 @@ parallel_1.print()
 parallel_2.print()
 parallel_3.print()
 parallel_4.print()
+
 print(f"Средняя площадь равна: {(quad_1.get_area() + quad_2.get_area() + quad_3.get_area() + quad_4.get_area()/4)}")
 print(f"Минимальная площадь: {min(parallel_1.get_area(), parallel_2.get_area(), parallel_3.get_area(), parallel_4.get_area())}")
 print(f"Максимальная площадь: {max(parallel_1.get_area(), parallel_2.get_area(), parallel_3.get_area(), parallel_4.get_area())}")

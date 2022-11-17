@@ -3,7 +3,6 @@ from math import sqrt
 
 
 class Quadrilateral:
-    # [x, y]
 
     def __init__(self, point_1, point_2, point_3, point_4):
         self.point_1 = point_1
@@ -63,7 +62,8 @@ class Parallelogram(Quadrilateral):
                self.get_angle(self.point_2, self.point_1, self.point_3) \
                == self.get_angle(self.point_4, self.point_1, self.point_3)
 
-    def get_vector(self, point_1, point_2):
+    @staticmethod
+    def get_vector(point_1, point_2):
         return [point_2[0] - point_1[0], point_2[1] - point_1[1]]
 
     def get_angle(self, point_1, point_2, point_3):
@@ -76,15 +76,38 @@ class Parallelogram(Quadrilateral):
         return round(math.degrees(math.acos(cos_a)))
 
     def get_area(self):
-        pass
+        a, b, c, d = Parallelogram.get_side_lengths(self.point_1, self.point_2, self.point_3, self.point_4)
+        return a*d*math.cos(self.get_angle(self.point_1, self.point_2, self.point_4))
 
     def print(self):
         print(f'Углы {"равны" if self.check_angle() else "не равны"}!')
         print(f'Параллелограмм {"существует" if self.checks_parallelogram() else "не существует"}!')
-        # print(self.get_angle(self.point_1, self.point_2, self.point_4))
-        # print(self.get_angle(self.point_2, self.point_1, self.point_3))
+        print(f"Площадь параллелограмма равна: {self.get_area()}")
 
 
+"""
+Написать программу, демонстрирующую работу с классом: дано N четырехугольников и M параллелограммов, 
+найти среднюю площадь N четырехугольников и параллелограммы с наименьшей и наибольшей площадями.
+"""
+quad_1 = Quadrilateral([0, 0], [0, 5], [5, 5], [5, 0])
+quad_2 = Quadrilateral([0, 0], [0, 15], [15, 15], [15, 0])
+quad_3 = Quadrilateral([0, 0], [0, 150], [150, 150], [150, 0])
+quad_4 = Quadrilateral([0, 0], [0, 25], [25, 25], [25, 0])
+
+parallel_1 = Parallelogram([0, 0], [5, 5], [10, 5], [5, 0])
+parallel_2 = Parallelogram([0, 0], [5, 10], [10, 10], [5, 0])
+parallel_3 = Parallelogram([0, 0], [5, 15], [10, 15], [5, 0])  # ошибка
+parallel_4 = Parallelogram([0, 0], [25, 5], [50, 5], [25, 0])
+
+parallel_1.print()
+parallel_2.print()
+parallel_3.print()
+parallel_4.print()
+print(f"Средняя площадь равна: {(quad_1.get_area() + quad_2.get_area() + quad_3.get_area() + quad_4.get_area()/4)}")
+print(f"Минимальная площадь: {min(parallel_1.get_area(), parallel_2.get_area(), parallel_3.get_area(), parallel_4.get_area())}")
+print(f"Максимальная площадь: {max(parallel_1.get_area(), parallel_2.get_area(), parallel_3.get_area(), parallel_4.get_area())}")
+
+'''
 test = Quadrilateral([0, 0], [0, 5], [5, 5], [5, 0])
 test.print()
 print("-"*30)
@@ -94,3 +117,4 @@ print("-"*30)
 test_3 = Parallelogram([0, 0], [5, 5], [10, 5], [5, 0])
 test_3.print()
 print("-"*30)
+'''

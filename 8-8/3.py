@@ -57,9 +57,21 @@ class Triangle:
 
 
 class RectangularPyramid(Rectangle, Triangle):
+    def __init__(self, a, b, c, d, h):
+        Rectangle.__init__(self, a, b, c, d)
+        Triangle.__init__(self, )
 
     def get_volume(self):
         pass
 
     def print(self):
         print(f"Объем равен: {self.get_volume()}")
+
+
+test_1 = Rectangle(4, 5, 4, 5)
+test_1.print()
+print('*'*30)
+test_2 = Triangle(6, 7, 8)
+test_2.print()
+print('*'*30)
+test_3 = RectangularPyramid(5, 6, 5, 6)

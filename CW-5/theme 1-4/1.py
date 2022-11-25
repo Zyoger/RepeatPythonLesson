@@ -38,7 +38,7 @@ class Account:
         self.amount_in_rubles += accrual
 
     def accrual_of_interest(self):
-        self.amount_in_rubles *= self.accrual_percentage
+        self.amount_in_rubles += self.amount_in_rubles*self.accrual_percentage
 
     def transfer_to_dollars_do_not_accept_parameters(self):
         pass
@@ -48,6 +48,18 @@ class Account:
 
     def get_info(self):
         print(self.surname)
+        print("*" * 30)
         print(self.account_number)
         print(self.amount_in_rubles)
         print(self.accrual_percentage)
+        print("*" * 30)
+
+
+account_123456 = Account("Tarakanov", 987654, 0.03, 9999)
+account_123456.get_info()
+account_123456.accrual_of_a_specified_amount(1000)
+account_123456.get_info()
+account_123456.withdrawal_of_a_specified_amount(2000)
+account_123456.get_info()
+account_123456.accrual_of_interest()
+account_123456.get_info()

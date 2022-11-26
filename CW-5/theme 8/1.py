@@ -23,7 +23,6 @@ class Pair(ABC):
         pass
 
 
-
 class FuzzyNumber(Pair, ABC):
     pass
 
